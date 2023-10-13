@@ -1,0 +1,23 @@
+.profile__avatar-edd {
+    border-radius: 50%;
+    height: 100%;
+    opacity: 0;
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    background-size: 26px;
+    background-image: url("../../../images/avatar-edd.svg");
+    top: 0;
+    left: 0;
+    width: 100%;
+
+}
+
+.profile__avatar-edd:hover {
+    opacity: 0.8;
+    transition: all .3s linear;
+}

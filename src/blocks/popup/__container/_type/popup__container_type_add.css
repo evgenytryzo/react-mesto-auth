@@ -1,0 +1,16 @@
+.popup__container_type_add {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+    max-width: 430px;
+    width: 100%;
+    min-width: 100px;
+    background-color: white;
+}
+
+@media screen and (max-width: 470px) {
+    .popup__container_type_add {
+        width: calc(100% - 38px);
+    }
+}

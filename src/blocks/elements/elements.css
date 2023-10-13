@@ -1,0 +1,13 @@
+.elements {
+    margin: 0 0 67px 0;
+    display: flex;
+    gap: 20px 17px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media screen and (max-width: 550px) {
+    .elements {
+        margin: 0 0 48px 0;
+    }
+}
