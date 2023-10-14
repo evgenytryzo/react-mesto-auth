@@ -18,6 +18,7 @@ import InfoTooltip from "./InfoTooltip.js"
 const App = () => {
   const [ currentUser, setCurrentUser ] = React.useState(null)
   const [ selectedCard, setSelectedCard ] = React.useState(null)
+  const [currentEmail, setCurrentEmail] = React.useState(null)
 
   const [ isEditProfilePopupOpen, setIsEditProfilePopupOpen ] = React.useState(false)
   const [ isAddPlacePopupOpen, setIsAddPlacePopupOpen ] = React.useState(false)
@@ -130,12 +131,13 @@ return (
 		<CurrentUserContext.Provider value={currentUser}>
 			<Routes>
 				<Route
-					path='/sing-in'
+					path='/sign-in'
 					element={
 						<Login
 							onClosePopup={closeAllPopups}
 							onLoggedIn={setLoggedIn}
 							loggedIn={loggedIn}
+							setCurrentEmail={setCurrentEmail}
 						/>
 					}
 				/>
@@ -154,6 +156,8 @@ return (
 					path='/'
 					element={
 						<ProtectedRoute
+							currentEmail={currentEmail}
+							onLoggedIn={setLoggedIn}
 							loggedIn={loggedIn}
 							component={Main}
 							onEditProfile={handleEditProfileClick}
@@ -168,7 +172,7 @@ return (
 				/>
 				<Route
 					path='*'
-					element={loggedIn ? <Navigate to='/' /> : <Navigate to='/sing-in' />}
+					element={loggedIn ? <Navigate to='/' /> : <Navigate to='/sign-in' />}
 				/>
 			</Routes>
 

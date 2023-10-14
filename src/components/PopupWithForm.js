@@ -41,7 +41,13 @@ const PopupWithForm = (props) => {
 					onClick={props.onClose}
 				/>
 
-				{props.icon && <img src={props.icon} alt='props.title'></img>}
+				{props.icon && (
+					<img
+						className='popup__image-infoTooltip'
+						src={props.icon}
+						alt='props.title'
+					></img>
+				)}
 
 				<h2 className='popup__name'>{props.title}</h2>
 

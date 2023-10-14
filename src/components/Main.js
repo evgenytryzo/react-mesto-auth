@@ -6,10 +6,15 @@ import Header from "./Header"
 import Footer from "./Footer"
 const Main = (props) => {
   const currentUser = useContext(CurrentUserContext)
-
   return (
 		<>
-    <Header/>
+			<Header
+				link='/sign-in'
+				text='Выход'
+				loggedIn={props.loggedIn}
+				onLoggedIn={props.onLoggedIn}
+				currentEmail={props.currentEmail}
+			/>
 			<main className='content'>
 				<section className='profile'>
 					<div className='profile__avatar-container'>
@@ -55,7 +60,7 @@ const Main = (props) => {
 					))}
 				</section>
 			</main>
-      <Footer/>
+			<Footer />
 		</>
 	)
 }

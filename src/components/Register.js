@@ -2,11 +2,13 @@ import Header from "./Header"
 import Footer from "./Footer"
 import { useState } from "react"
 import Auth from "./Auth"
+import { useNavigate } from "react-router-dom"
 
 const Register = (props) => {
+	const navigate = useNavigate()
 	  const [formValue, setFormValue] = useState({
-			email: 'f0011@inbox.ru',
-			password: '260202ff',
+			email: '',
+			password: '',
 		})
 
 		const endpointRegister = '/signup'
@@ -24,13 +26,15 @@ const handleSubmit = e => {
 	const { password, email } = formValue
 	Auth(password, email, endpointRegister)
 		.then(data => {
-			props.handleTextInfoTooltip(true)}
-			)
+			props.handleTextInfoTooltip(true)
+		})
+		.then(navigate('/sign-in', { replace: true }))
 		.catch(error => {
 			console.error(`Ошибка: ${error.message}`)
 			console.error(`Status: ${error.status}`)
 			console.error(error)
 			props.handleTextInfoTooltip(false)
+			props.handleInfo()
 		})
 }
 
@@ -62,8 +66,7 @@ const handleSubmit = e => {
 					/>
 					<button
 						type='submit'
-						className='login__button'
-						onClick={props.handleInfo}
+						className='login__button' 
 					>
 						Войти
 					</button>

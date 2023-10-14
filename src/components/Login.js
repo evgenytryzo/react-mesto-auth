@@ -5,8 +5,8 @@ import Auth from "./Auth"
 import { Navigate } from "react-router-dom"
 const Login = (props) => {
 const [formValue, setFormValue] = useState({
-			email: 'f0011@inbox.ru',
-			password: '260202ff',
+			email: '',
+			password: '',
 		})
 		const endpointRegister = '/signin'
 
@@ -43,7 +43,7 @@ const checkValidityUser = token => {
 		},
 	})
 		.then(res => res.json())
-		.then(data => console.log(data))
+		.then(data => props.setCurrentEmail({ email: data.data.email }))
 		.then(props.onLoggedIn(true))
 		.then(localStorage.setItem('token', token))
 		.catch(error => {
@@ -69,7 +69,7 @@ const handleSubmit = e => {
 
 	return (
 		<>
-			{props.loggedIn ? <Navigate to='/' /> : <Navigate to='/sing-in' />}
+			{props.loggedIn ? <Navigate to='/' /> : <Navigate to='/sign-in' />}
 			<section className='login-container'>
 				<Header link='/sign-up' text='Регистрация' />
 				<div className='login'>
