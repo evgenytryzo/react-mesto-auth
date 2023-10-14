@@ -1,6 +1,6 @@
-	const BASE_URL = 'https://auth.nomoreparties.co'
+const BASE_URL = 'https://auth.nomoreparties.co'
 
-	const Auth = (password, email, endpointRegister) => {
+const Auth = (password, email, endpointRegister) => {
 	return fetch(`${BASE_URL}${endpointRegister}`, {
 		method: 'POST',
 		headers: {
@@ -16,6 +16,5 @@ function checkResponse(res) {
 	}
 	return res.json().then(err => Promise.reject({ ...err, status: res.status }))
 }
-
 
 export default Auth

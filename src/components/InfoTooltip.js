@@ -1,9 +1,8 @@
-import PopupWithForm from "./PopupWithForm"
-import registerIcon from "../images/registerIcon.svg"
-import notRegisterIcon from "../images/notRegisterIcon.svg"
+import PopupWithForm from './PopupWithForm'
+import registerIcon from '../images/registerIcon.svg'
+import notRegisterIcon from '../images/notRegisterIcon.svg'
 
-
-const InfoTooltip = (props) => {
+const InfoTooltip = props => {
 	const textValidate = 'Вы успешно зарегистрировались!'
 	const textNotValidate = 'Что-то пошло не так! Попробуйте ещё раз.'
 

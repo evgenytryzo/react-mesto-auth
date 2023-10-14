@@ -1,42 +1,43 @@
-import Header from "./Header"
-import Footer from "./Footer"
-import { useState } from "react"
-import Auth from "./Auth"
-import { useNavigate } from "react-router-dom"
+import Header from './Header'
+import Footer from './Footer'
+import { useState } from 'react'
+import Auth from './Auth'
+import { useNavigate } from 'react-router-dom'
 
-const Register = (props) => {
+const Register = props => {
 	const navigate = useNavigate()
-	  const [formValue, setFormValue] = useState({
-			email: '',
-			password: '',
+	const [formValue, setFormValue] = useState({
+		email: 'tryzo@yandex.ru',
+		password: '123',
+	})
+
+	const endpointRegister = '/signup'
+
+	const handleChange = e => {
+		const { name, value } = e.target
+		setFormValue({
+			...formValue,
+			[name]: value,
 		})
+	}
 
-		const endpointRegister = '/signup'
-
-		const handleChange = e => {
-			const { name, value } = e.target
-			setFormValue({
-				...formValue,
-				[name]: value,
+	const handleSubmit = e => {
+		e.preventDefault()
+		const { password, email } = formValue
+		Auth(password, email, endpointRegister)
+			.then(data => {
+				props.handleInfo()
+				props.handleTextInfoTooltip(true)
+				navigate('/sign-in', { replace: true })
 			})
-		}
-
-const handleSubmit = e => {
-	e.preventDefault()
-	const { password, email } = formValue
-	Auth(password, email, endpointRegister)
-		.then(data => {
-			props.handleTextInfoTooltip(true)
-		})
-		.then(navigate('/sign-in', { replace: true }))
-		.catch(error => {
-			console.error(`Ошибка: ${error.message}`)
-			console.error(`Status: ${error.status}`)
-			console.error(error)
-			props.handleTextInfoTooltip(false)
-			props.handleInfo()
-		})
-}
+			.catch(error => {
+				console.error(`Ошибка: ${error.message}`)
+				console.error(`Status: ${error.status}`)
+				console.error(error)
+				props.handleInfo()
+				props.handleTextInfoTooltip(false)
+			})
+	}
 
 	return (
 		<section className='login-container'>
@@ -64,10 +65,7 @@ const handleSubmit = e => {
 						value={formValue.password}
 						onChange={handleChange}
 					/>
-					<button
-						type='submit'
-						className='login__button' 
-					>
+					<button type='submit' className='login__button'>
 						Войти
 					</button>
 				</form>

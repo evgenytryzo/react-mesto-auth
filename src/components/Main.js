@@ -1,12 +1,11 @@
-import React, { useContext } from "react"
-import api from "../utils/Api"
-import Card from "./Card"
-import { CurrentUserContext } from "./CurrentUserContext"
-import Header from "./Header"
-import Footer from "./Footer"
-const Main = (props) => {
-  const currentUser = useContext(CurrentUserContext)
-  return (
+import React, { useContext } from 'react'
+import Card from './Card'
+import { CurrentUserContext } from './CurrentUserContext'
+import Header from './Header'
+import Footer from './Footer'
+const Main = props => {
+	const currentUser = useContext(CurrentUserContext)
+	return (
 		<>
 			<Header
 				link='/sign-in'

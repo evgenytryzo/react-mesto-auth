@@ -1,33 +1,29 @@
-import React from "react"
-import FormSubmitButton from "./FormSubmitButton"
-import registerIcon from '../images/registerIcon.svg'
+import React from 'react'
+import FormSubmitButton from './FormSubmitButton'
 
-const PopupWithForm = (props) => {
+const PopupWithForm = props => {
+	const handleOverlayClick = e => {
+		if (e.target === e.currentTarget) {
+			props.onClose()
+		}
+	}
+	React.useEffect(() => {
+		const handleEscKeyClose = e => {
+			if (e.key === 'Escape') {
+				props.onClose()
+			}
+		}
 
-  const handleOverlayClick = (e) => {
-    if ( e.target === e.currentTarget ) {
-      props.onClose()
-    }
-  }
-  React.useEffect(() => {
-    const handleEscKeyClose = (e) => {
-      if ( e.key === "Escape" ) {
-        props.onClose()
-      }
-    }
+		if (props.isOpen) {
+			document.addEventListener('keydown', handleEscKeyClose)
+		}
 
-    if ( props.isOpen ) {
-      document.addEventListener("keydown", handleEscKeyClose)
-    }
+		return () => {
+			document.removeEventListener('keydown', handleEscKeyClose)
+		}
+	}, [props.isOpen])
 
-    return () => {
-      document.removeEventListener("keydown", handleEscKeyClose)
-    }
-  }, [ props.isOpen ])
-
-
-
-  return (
+	return (
 		<div
 			onMouseDown={handleOverlayClick}
 			className={`popup popup_type_${props.name} ${
