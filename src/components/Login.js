@@ -5,8 +5,8 @@ import Auth from './Auth'
 import { Navigate } from 'react-router-dom'
 const Login = props => {
 	const [formValue, setFormValue] = useState({
-		email: 'tryzo@yandex.ru',
-		password: '123',
+		email: '',
+		password: '',
 	})
 	const endpointRegister = '/signin'
 
@@ -88,7 +88,7 @@ const Login = props => {
 							id='password'
 							required
 							name='password'
-							type='text'
+							type='password'
 							value={formValue.password}
 							onChange={handleChange}
 						/>

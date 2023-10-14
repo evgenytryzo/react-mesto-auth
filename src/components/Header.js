@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 const Header = props => {
 	const navigate = useNavigate()
 
-	const test = () => {
+	const handleLogout = () => {
 		if (props.loggedIn) {
 			props.onLoggedIn(false)
 			localStorage.removeItem('token')
@@ -21,7 +21,11 @@ const Header = props => {
 						<p className='header__email'>{props.currentEmail.email}</p>
 					)}
 					{props.link && (
-						<Link className='header__button' to={props.link} onClick={test}>
+						<Link
+							className='header__button'
+							to={props.link}
+							onClick={handleLogout}
+						>
 							{props.text}
 						</Link>
 					)}

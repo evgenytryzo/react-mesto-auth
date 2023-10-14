@@ -7,8 +7,8 @@ import { useNavigate } from 'react-router-dom'
 const Register = props => {
 	const navigate = useNavigate()
 	const [formValue, setFormValue] = useState({
-		email: 'tryzo@yandex.ru',
-		password: '123',
+		email: '',
+		password: '',
 	})
 
 	const endpointRegister = '/signup'
@@ -61,7 +61,7 @@ const Register = props => {
 						id='password'
 						required
 						name='password'
-						type='text'
+						type='password'
 						value={formValue.password}
 						onChange={handleChange}
 					/>
